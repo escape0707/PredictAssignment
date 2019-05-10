@@ -37,7 +37,7 @@ def preprocess() -> None:
 preprocess()
 C
 # %% [markdown]
-#  ## 枚举所有组合并验证概率：
+#  ## 枚举所有组合并计算概率：
 # %%
 import itertools
 
@@ -84,6 +84,8 @@ def enumerate_calc(a: int, b: int, k: int) -> float:
 
     P = bingo_count / combination_count
     return P
+# %% [markdown]
+#  ## 我提出的解答函数：
 # %%
 def predict(a: int = 10, b: int = 9, k: int = 28) -> float:
     """Predict the possibility asked in the question.
@@ -112,6 +114,8 @@ def predict(a: int = 10, b: int = 9, k: int = 28) -> float:
     P /= C[a * b][k]
 
     return P
+# %% [markdown]
+#  ## 测试函数：
 # %%
 test = 6
 
@@ -129,5 +133,7 @@ def run_test(test_a = test, test_b = test):
                     print(a, b, k)
                     return
     print('Finished.')
+# %% [markdown]
+#  进行测试：
 # %%
 run_test()                    
