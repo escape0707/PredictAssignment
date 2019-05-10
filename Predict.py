@@ -19,7 +19,7 @@
 #  ## 组合数预处理函数：
 # %%
 # The max resonable a * b
-maxN = 33
+maxN = 100
 # The pre-processed combination numbers
 C = [[None] * (i + 1) for i in range(maxN)]
 
@@ -67,21 +67,24 @@ def enumerate_calc(a: int, b: int, k: int) -> float:
     combinations = itertools.combinations(range(a * b), k)
     # Total of combinations which at least contain one complete painting
     bingo_count = 0
+    combination_count = 0
 
     for picked in combinations:
+        combination_count += 1
         painting_index = 0
         fragment_count = 0
         for fragment in picked:
             index = fragment // b
             if index == painting_index:
                 fragment_count += 1
-                if fragment_count == b:
-                    bingo_count += 1
             else:
                 painting_index = index
                 fragment_count = 1
+            if fragment_count == b:
+                bingo_count += 1
+                break
 
-    P = bingo_count / len(combinations)
+    P = bingo_count / combination_count
     return P
 
 
@@ -115,3 +118,18 @@ def predict(a: int = 10, b: int = 9, k: int = 28) -> float:
     P /= C[a * b][k]
 
     return P
+
+# %%
+def run_test():
+    for a in range(1, 10):
+        for b in range(1, 10):
+            for k in range(b, a * b + 1):
+                my_answer = predict(a, b, k)
+                ground_truth = enumerate_calc(a, b, k)
+                print(my_answer, ground_truth)
+                if my_answer != ground_truth:
+                    print('What?')
+                    print(a, b, k)
+                    return
+# %%
+run_test()                    
