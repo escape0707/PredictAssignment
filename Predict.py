@@ -120,16 +120,21 @@ def predict(a: int = 10, b: int = 9, k: int = 28) -> float:
     return P
 
 # %%
-def run_test():
-    for a in range(1, 10):
-        for b in range(1, 10):
+test = 6
+
+def run_test(test_a = test, test_b = test):
+    for a in range(1, test_a):
+        for b in range(1, test_b):
             for k in range(b, a * b + 1):
+                print(a, b, k)
                 my_answer = predict(a, b, k)
+                print(a, b, k)
                 ground_truth = enumerate_calc(a, b, k)
                 print(my_answer, ground_truth)
                 if my_answer != ground_truth:
                     print('What?')
                     print(a, b, k)
                     return
+    print('Finished.')
 # %%
 run_test()                    
