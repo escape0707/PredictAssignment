@@ -31,8 +31,6 @@ def preprocess() -> None:
                 C[i][j] = 1
             else:
                 C[i][j] = C[i - 1][j - 1] + C[i - 1][j]
-
-
 # %% [markdown]
 #  测试预处理生成的结果：
 # %%
@@ -86,11 +84,7 @@ def enumerate_calc(a: int, b: int, k: int) -> float:
 
     P = bingo_count / combination_count
     return P
-
-
 # %%
-
-
 def predict(a: int = 10, b: int = 9, k: int = 28) -> float:
     """Predict the possibility asked in the question.
 
@@ -118,7 +112,6 @@ def predict(a: int = 10, b: int = 9, k: int = 28) -> float:
     P /= C[a * b][k]
 
     return P
-
 # %%
 test = 6
 
