@@ -23,7 +23,6 @@ maxN = 100
 # The pre-processed combination numbers
 C = [[None] * (i + 1) for i in range(maxN)]
 
-
 def preprocess() -> None:
     for i in range(maxN):
         for j in range(i + 1):
@@ -35,14 +34,15 @@ def preprocess() -> None:
 #  测试预处理生成的结果：
 # %%
 preprocess()
-C
+for i in range(10):
+    print(C[i])
+print('...')
 # %% [markdown]
 #  ## 枚举所有组合并计算概率：
 # %%
 import itertools
 
 combinations = None
-
 
 def enumerate_calc(a: int, b: int, k: int) -> float:
     """Calculate the possibility using enumerating method.
